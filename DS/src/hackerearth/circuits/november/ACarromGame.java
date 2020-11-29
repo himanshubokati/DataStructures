@@ -2,6 +2,7 @@ package hackerearth.circuits.november;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class ACarromGame {
@@ -28,9 +29,8 @@ public class ACarromGame {
 			Bmax = pl[3];
 			Bi = 3;
 		}
+		int tt = 0;
 
-		Arrays.sort(black);
-		Arrays.sort(white);
 		int idBlack = 0, idWhilte = 0;
 		int turn = 0;
 		while (true) {
@@ -47,7 +47,7 @@ public class ACarromGame {
 
 			if (Bi == turn) {
 				if (idWhilte < N && Bmax >= white[idWhilte]) {
-					Bmax += black[idWhilte];
+					Bmax += white[idWhilte];
 					idWhilte++;
 
 				} else {
@@ -60,6 +60,7 @@ public class ACarromGame {
 
 			}
 			turn = (turn + 1) % 4;
+
 			if ((pl[turn] >= red && idWhilte >= N && (turn == 1 || turn == 3))
 					|| (pl[turn] >= red && idBlack >= N && (turn == 2 || turn == 0))) {
 				break;
